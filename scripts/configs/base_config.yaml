@@ -1,0 +1,28 @@
+# Base configuration — shared defaults for all environments.
+# Override with dev_config.yaml or prod_config.yaml as needed.
+# Never commit secrets; use environment variables or a secrets manager.
+
+app:
+  name: bug-free-broccoli
+  version: "0.1.0"
+
+fhir:
+  base_url: "${FHIR_BASE_URL}"          # e.g. http://localhost:8080/fhir
+  version: "R4"
+
+database:
+  url: "${DATABASE_URL}"                # e.g. postgresql://user:pass@localhost/fhirdb
+  pool_size: 5
+  max_overflow: 10
+
+mcp:
+  host: "0.0.0.0"
+  port: 8000
+
+adk:
+  model: "${ADK_MODEL:-gemini-2.0-flash}"
+  max_iterations: 10
+
+logging:
+  level: "INFO"
+  format: "json"
